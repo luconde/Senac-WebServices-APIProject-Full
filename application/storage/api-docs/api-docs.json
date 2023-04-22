@@ -1,0 +1,3948 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Senac Bike Store API - By Condé",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "INSIRA AQUI A URL do Host",
+            "description": "Produção"
+        },
+        {
+            "url": "INSIRA AQUI A URL do Host",
+            "description": "Produção"
+        }
+    ],
+    "paths": {
+        "/api/categorias": {
+            "get": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Retorna a Lista de Categorias.",
+                "description": "Retorna o JSON da Lista de Categorias.",
+                "operationId": "getCategoriasList",
+                "parameters": [
+                    {
+                        "name": "ordenacao",
+                        "in": "query",
+                        "description": "Ordernação dos dados",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriasResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriasResponseException500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Armazena os dados de uma nova Categoria.",
+                "description": "Armazena e retorna o JSON de uma nova Categoria.",
+                "operationId": "postCategoria",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoriaNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/categorias/{id}": {
+            "get": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Retorna os dados de uma Categoria.",
+                "description": "Retorna o JSON de uma Categoria.",
+                "operationId": "getCategoria",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Categoria",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Categoria não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Apaga os dados de uma categoria.",
+                "description": "Apaga e retorna o JSON de confirmação.",
+                "operationId": "deleteCategoria",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Categoria",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Categoria não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Atualiza os dados de uma categoria.",
+                "description": "Atualiza e retorna o JSON de uma nova Categoria.",
+                "operationId": "patchCategoria",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Categoria",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Categoria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Categoria não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/clientes": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Retorna a Lista de Clientes.",
+                "description": "Retorna o JSON da Lista de Clientes.",
+                "operationId": "getClientesList",
+                "parameters": [
+                    {
+                        "name": "ordenacao",
+                        "in": "query",
+                        "description": "Ordernação dos dados",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClientesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClientesResponseException500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Armazena os dados de um novo Cliente.",
+                "description": "Armazena e retorna o JSON de um novo Cliente.",
+                "operationId": "postCliente",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClienteNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/clientes/{id}": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Retorna os dados de um Cliente.",
+                "description": "Retorna o JSON de um Cliente.",
+                "operationId": "getCliente",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cliente não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Apaga os dados de um cliente.",
+                "description": "Apaga e retorna o JSON de confirmação.",
+                "operationId": "deleteCliente",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cliente não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Atualiza os dados de um cliente.",
+                "description": "Atualiza e retorna o JSON de um Cliente.",
+                "operationId": "patchCliente",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cliente"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cliente não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/pedidos/{id}/itensdopedido": {
+            "get": {
+                "tags": [
+                    "ItensDoPedido"
+                ],
+                "summary": "Retorna a Lista de Itens do Pedido.",
+                "description": "Retorna o JSON da Lista de Itens do Pedido.",
+                "operationId": "getItensList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItensDoPedidoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItensDoPedidoResponseException500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "ItensDoPedido"
+                ],
+                "summary": "Armazena os dados de um novo Item do Pedido.",
+                "description": "Armazena e retorna o JSON de um novo Item do Pedido.",
+                "operationId": "postItem",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/pedidos/{iddopedido}/itensdopedido/{iddoitem}": {
+            "get": {
+                "tags": [
+                    "ItensDoPedido"
+                ],
+                "summary": "Retorna os dados de um Item do Pedido.",
+                "description": "Retorna o JSON de um Item do Pedido.",
+                "operationId": "getItem",
+                "parameters": [
+                    {
+                        "name": "iddopedido",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "iddoitem",
+                        "in": "path",
+                        "description": "Id do Item do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Pedido não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ItensDoPedido"
+                ],
+                "summary": "Apaga os dados de um pedido.",
+                "description": "Apaga e retorna o JSON de confirmação.",
+                "operationId": "deleteItem",
+                "parameters": [
+                    {
+                        "name": "iddopedido",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "iddoitem",
+                        "in": "path",
+                        "description": "Id do Item do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Item do pedido não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "ItensDoPedido"
+                ],
+                "summary": "Atualiza os dados de um Item do Pedido.",
+                "description": "Atualiza e retorna o JSON de um Item do Pedido.",
+                "operationId": "patchItem",
+                "parameters": [
+                    {
+                        "name": "iddopedido",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "iddoitem",
+                        "in": "path",
+                        "description": "Id do Item do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Item do pedido não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/marcas": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Retorna a Lista de Marcas.",
+                "description": "Retorna o JSON da Lista de Marcas.",
+                "operationId": "getMarcasList",
+                "parameters": [
+                    {
+                        "name": "ordenacao",
+                        "in": "query",
+                        "description": "Ordernação dos dados",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcasResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcasResponseException500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Armazena os dados de uma nova Marca.",
+                "description": "Armazena e retorna o JSON de uma nova Marca.",
+                "operationId": "postMarca",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MarcaNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/marcas/{id}": {
+            "get": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Retorna os dados de uma Marca.",
+                "description": "Retorna o JSON de uma Marca.",
+                "operationId": "getMarca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Marca não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Apaga os dados de uma categoria.",
+                "description": "Apaga e retorna o JSON de confirmação.",
+                "operationId": "deleteMarca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Marca não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Marcas"
+                ],
+                "summary": "Atualiza os dados de uma marca.",
+                "description": "Atualiza e retorna o JSON de uma nova Marca.",
+                "operationId": "patchMarca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Marca"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Marca não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarcaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Seguranca"
+                ],
+                "summary": "Cria um novo usuario.",
+                "description": "Retorna o Token de autenticação.",
+                "operationId": "register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRegisterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException500"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Seguranca"
+                ],
+                "summary": "Login do usuario.",
+                "description": "Retorna o Token de autenticação.",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthLoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "Acesso não autorizado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException406"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Seguranca"
+                ],
+                "summary": "Logout do usuario.",
+                "description": "Retorna o Token de autenticação.",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "Acesso não autorizado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "Seguranca"
+                ],
+                "summary": "Retorna as informações do usuário logado.",
+                "description": "Retorna o Token de autenticação.",
+                "operationId": "user",
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "Acesso não autorizado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/clientes/{id}/pedidos": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Retorna a Lista de Pedidos.",
+                "description": "Retorna o JSON da Lista de Pedidos.",
+                "operationId": "getPedidosList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "ordenacao",
+                        "in": "query",
+                        "description": "Ordernação dos dados",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidosResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidosResponseException500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/clientes/{1}/pedidos": {
+            "post": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Armazena os dados de um novo Pedido.",
+                "description": "Armazena e retorna o JSON de um novo Pedido.",
+                "operationId": "postPedido",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PedidoNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/pedidos/{id}": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Retorna os dados de um Pedido.",
+                "description": "Retorna o JSON de um Pedido.",
+                "operationId": "getPedido",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Pedido não encontrada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Apaga os dados de um pedido.",
+                "description": "Apaga e retorna o JSON de confirmação.",
+                "operationId": "deletePedido",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Pedido não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Atualiza os dados de um pedido.",
+                "description": "Atualiza e retorna o JSON de um Pedido.",
+                "operationId": "patchPedido",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PedidoNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Pedido não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PedidoResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoriaResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/produtos": {
+            "get": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Retorna a Lista de Produtos.",
+                "description": "Retorna o JSON da Lista de Produtos.",
+                "operationId": "getProdutosList",
+                "parameters": [
+                    {
+                        "name": "ordenacao",
+                        "in": "query",
+                        "description": "Ordernação dos dados",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filtro",
+                        "in": "query",
+                        "description": "Filtro dos dados",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pagina",
+                        "in": "query",
+                        "description": "Página de dados",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutosResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutosResponseException500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Armazena os dados de um novo Produto.",
+                "description": "Armazena e retorna o JSON de um novo Produto.",
+                "operationId": "postProduto",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProdutoNewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/produtos/{id}": {
+            "get": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Retorna os dados de um Produto.",
+                "description": "Retorna o JSON de um Produto.",
+                "operationId": "getProduto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Apaga os dados de um produto.",
+                "description": "Apaga e retorna o JSON de confirmação.",
+                "operationId": "deleteProduto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Atualiza os dados de um produto.",
+                "description": "Atualiza e retorna o JSON de um produto.",
+                "operationId": "patchProduto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Produto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operação executada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ocorreu um erro interno.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException500"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException404"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "O campo Id deve ser numérico.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProdutoResponseException406"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthLoginRequest": {
+                "title": "AuthLoginRequest",
+                "description": "Requisição enviada via Body para login.",
+                "required": [
+                    "nome"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "Email do usuário.",
+                        "type": "string"
+                    },
+                    "senha": {
+                        "title": "senha",
+                        "description": "Senha do usuário.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AuthRegisterRequest": {
+                "title": "AuthRegisterRequest",
+                "description": "Requisição enviada via Body para uma inserção de um novo login",
+                "required": [
+                    "nome"
+                ],
+                "properties": {
+                    "nome": {
+                        "title": "nome",
+                        "description": "Nome do usuário.",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Email do usuário.",
+                        "type": "string"
+                    },
+                    "senha": {
+                        "title": "senha",
+                        "description": "Senha do usuário.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AuthRequest": {
+                "title": "Requisicao para login",
+                "description": "Requisição enviada via Body para login",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "Email",
+                        "description": "email",
+                        "type": "string",
+                        "example": "demo@demo.com"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "description": "Senha",
+                        "type": "string",
+                        "example": "Insira a senha"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoriaNewRequest": {
+                "title": "CategoriaNewRequest",
+                "description": "Requisição enviada via Body para uma inserção ou atualização de uma Categoria",
+                "required": [
+                    "nome_da_categoria"
+                ],
+                "properties": {
+                    "nome_da_categoria": {
+                        "title": "nome_da_categoria",
+                        "description": "Nome da categoria.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ClienteNewRequest": {
+                "title": "ClienteNewRequest",
+                "description": "Requisição enviada via Body para uma inserção ou atualização de um novo Cliente",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "nome": {
+                        "title": "nome",
+                        "description": "Nome do Cliente.",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Email do Cliente.",
+                        "type": "string"
+                    },
+                    "telefone": {
+                        "title": "telefone",
+                        "description": "Telefone do Cliente.",
+                        "type": "string"
+                    },
+                    "rua": {
+                        "title": "rua",
+                        "description": "Rua do endereço do Cliente.",
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "title": "cidade",
+                        "description": "Cidade do endereço do Cliente.",
+                        "type": "string"
+                    },
+                    "estado": {
+                        "title": "estado",
+                        "description": "Estado do endereço do Cliente.",
+                        "type": "string"
+                    },
+                    "cep": {
+                        "title": "cep",
+                        "description": "Cep do endereço do Cliente.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemNewRequest": {
+                "title": "ItemNewRequest",
+                "description": "Requisição enviada via Body para uma inserção ou atualização de um novo Item do Pedido",
+                "required": [
+                    "quantidade, preco_de_lista, desconto"
+                ],
+                "properties": {
+                    "quantidade": {
+                        "title": "quantidade",
+                        "description": "Quantidade do produto.",
+                        "type": "integer"
+                    },
+                    "preco_de_lista": {
+                        "title": "preco_de_lista",
+                        "description": "Preço de lista do Produto.",
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "desconto": {
+                        "title": "taxa de desconto",
+                        "description": "Taxa de desconto do preço.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.2
+                    }
+                },
+                "type": "object"
+            },
+            "MarcaNewRequest": {
+                "title": "MarcaNewRequest",
+                "description": "Requisição enviada via Body para uma inserção ou atualização de uma Marca",
+                "required": [
+                    "nome_da_Marca"
+                ],
+                "properties": {
+                    "nome_da_marca": {
+                        "title": "nome_da_Marca",
+                        "description": "Nome da Marca.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Categoria": {
+                "title": "Categoria",
+                "description": "Modelo da Categoria.",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id da categoria.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "nome_da_categoria": {
+                        "title": "nome da categoria",
+                        "description": "Nome da Categoria.",
+                        "type": "string",
+                        "example": "Bicicleta"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Categoria"
+                }
+            },
+            "Cliente": {
+                "title": "Cliente",
+                "description": "Modelo de Cliente.",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id do cliente.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "nome": {
+                        "title": "nome do cliente",
+                        "description": "Nome do Cliente.",
+                        "type": "string",
+                        "example": "John Smith"
+                    },
+                    "telefone": {
+                        "title": "telefone do cliente",
+                        "description": "Telefone do Cliente.",
+                        "type": "string",
+                        "example": "555-5555"
+                    },
+                    "email": {
+                        "title": "email do cliente",
+                        "description": "Email do Cliente.",
+                        "type": "string",
+                        "example": "demo@demo.com"
+                    },
+                    "rua": {
+                        "title": "rua do endereço do cliente",
+                        "description": "Rua do Endereço do Cliente.",
+                        "type": "string",
+                        "example": "Avenida Xpto"
+                    },
+                    "cidade": {
+                        "title": "cidade do endereço do cliente",
+                        "description": "Cidade do Endereço do Cliente.",
+                        "type": "string",
+                        "example": "São Paulo"
+                    },
+                    "estado": {
+                        "title": "estado do endereço do cliente",
+                        "description": "Estado do Endereço do Cliente.",
+                        "type": "string",
+                        "example": "SP"
+                    },
+                    "cep": {
+                        "title": "cep do endereço do cliente",
+                        "description": "CEP do Endereço do Cliente.",
+                        "type": "string",
+                        "example": "11111-111"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Cliente"
+                }
+            },
+            "Item": {
+                "title": "Item",
+                "description": "Modelo de Item do Pedido.",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id do peido.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "quantidade": {
+                        "title": "quantidade",
+                        "description": "Quantidade de produtos.",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "preco": {
+                        "title": "preco",
+                        "description": "Preço de compra do item.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 599.99
+                    },
+                    "moeda": {
+                        "title": "moeda de preço de compra",
+                        "description": "Moeda do preço de compra.",
+                        "type": "string",
+                        "example": "USD"
+                    },
+                    "desconto": {
+                        "title": "taxa de desconto",
+                        "description": "Taxa de desconto do preço.",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.2
+                    },
+                    "produto": {
+                        "$ref": "#/components/schemas/Produto"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Item"
+                }
+            },
+            "Marca": {
+                "title": "Marca",
+                "description": "Modelo da Marca.",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id da Marca.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "nome_da_marca": {
+                        "title": "nome da marca",
+                        "description": "Nome da Marca.",
+                        "type": "string",
+                        "example": "Electra"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Marca"
+                }
+            },
+            "Pedido": {
+                "title": "Pedido",
+                "description": "Modelo da Pedido.",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id do Pedido.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "data_do_pedido": {
+                        "title": "data do pedido",
+                        "description": "Data que o pedido foi realizado.",
+                        "type": "string",
+                        "example": "2016-08-01"
+                    },
+                    "cliente": {
+                        "$ref": "#/components/schemas/Cliente"
+                    },
+                    "itens": {
+                        "title": "lista de itens do pedido",
+                        "description": "Lista de Itens do pedido.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Item"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Pedido"
+                }
+            },
+            "Produto": {
+                "title": "Produto",
+                "description": "Modelo do Produto.",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id do produto.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "nome_da_produto": {
+                        "title": "nome do produto",
+                        "description": "Nome do Produto.",
+                        "type": "string",
+                        "example": "Surly Straggler - 2016"
+                    },
+                    "ano_do_modelo": {
+                        "title": "ano do modelo",
+                        "description": "Ano do modelo do Produto.",
+                        "type": "integer",
+                        "example": "2016"
+                    },
+                    "preco_de_lista": {
+                        "title": "preço de lista",
+                        "description": "Preço de lista do Produto.",
+                        "type": "number",
+                        "format": "double",
+                        "example": "2016"
+                    },
+                    "moeda": {
+                        "title": "moeda de preço de lista",
+                        "description": "Moeda do preço de lista do produto.",
+                        "type": "string",
+                        "example": "USD"
+                    },
+                    "categoria": {
+                        "$ref": "#/components/schemas/Categoria"
+                    },
+                    "marca": {
+                        "$ref": "#/components/schemas/Marca"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Produto"
+                }
+            },
+            "User": {
+                "title": "Usuario",
+                "description": "Modelo do Usuario",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id do usuário.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "nome",
+                        "description": "Nome do Usuario.",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Email do usuario.",
+                        "type": "string",
+                        "example": "demo@demo.com"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "PedidoNewRequest": {
+                "title": "PedidoNewRequest",
+                "description": "Requisição enviada via Body para uma inserção ou atualização de um novo Pedido",
+                "required": [
+                    "nome_da_Marca"
+                ],
+                "properties": {
+                    "data_requisitada": {
+                        "title": "data_requisitada",
+                        "description": "Data do pedido.",
+                        "type": "string",
+                        "format": "date"
+                    }
+                },
+                "type": "object"
+            },
+            "ProdutoNewRequest": {
+                "title": "ProdutoNewRequest",
+                "description": "Requisição enviada via Body para uma inserção ou atualização de um Produto",
+                "required": [
+                    "nome_do_produto, ano_do_modelo, preco_de_lista"
+                ],
+                "properties": {
+                    "nome_do_produto": {
+                        "title": "nome_do_produto",
+                        "description": "Nome do Produto.",
+                        "type": "string"
+                    },
+                    "ano_do_modelo": {
+                        "title": "ano_do_modelo",
+                        "description": "Ano do modelo do Produto.",
+                        "type": "integer"
+                    },
+                    "preco_de_lista": {
+                        "title": "preco_de_lista",
+                        "description": "Preço de lista do Produto.",
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "type": "object"
+            },
+            "AuthResponse": {
+                "title": "AuthResponse",
+                "description": "Resposta enviada via JSON para os dados de Token",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Você está logado."
+                    },
+                    "token": {
+                        "title": "token",
+                        "description": "Token de Autenticação",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthResponse"
+                }
+            },
+            "AuthResponseException404": {
+                "title": "AuthResponseException404",
+                "description": "Resposta enviada via JSON para os dados de Token",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Não encontrado."
+                    },
+                    "token": {
+                        "title": "token",
+                        "description": "Token de Autenticação",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthResponseException404"
+                }
+            },
+            "AuthResponseException406": {
+                "title": "AuthResponseException406",
+                "description": "Resposta enviada via JSON para os dados de Token",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Acesso não autorizado."
+                    },
+                    "token": {
+                        "title": "token",
+                        "description": "Token de Autenticação",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthResponseException406"
+                }
+            },
+            "AuthResponseException500": {
+                "title": "AuthResponseException500",
+                "description": "Resposta enviada via JSON para os dados de Token",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "token": {
+                        "title": "token",
+                        "description": "Token de Autenticação",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthResponseException500"
+                }
+            },
+            "AuthUserResponse": {
+                "title": "AuthUserResponse",
+                "description": "Resposta enviada via JSON para os dados do Usuário logado.",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Você está logado."
+                    },
+                    "usuario": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthUserResponse"
+                }
+            },
+            "AuthUserResponseException404": {
+                "title": "AuthUserResponseException404",
+                "description": "Resposta enviada via JSON para os dados do Usuário logado.",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Não encontrado."
+                    },
+                    "usuario": {
+                        "title": "usuario",
+                        "description": "Dados do usuário logado.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthUserResponseException404"
+                }
+            },
+            "AuthUserResponseException406": {
+                "title": "AuthUserResponseException406",
+                "description": "Resposta enviada via JSON para os dados do Usuário logado.",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Acesso não autorizado."
+                    },
+                    "usuario": {
+                        "title": "usuario",
+                        "description": "Dados do usuário logado.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthUserResponseException406"
+                }
+            },
+            "AuthUserResponseException500": {
+                "title": "AuthUserResponseException500",
+                "description": "Resposta enviada via JSON para os dados do Usuário logado.",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "usuario": {
+                        "title": "usuario",
+                        "description": "Dados do usuário logado.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "AuthUserResponseException500"
+                }
+            },
+            "CategoriaResponse": {
+                "title": "CategoriaResponse",
+                "description": "Resposta enviada via JSON para os dados de uma Categoria",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Categoria retornada."
+                    },
+                    "categoria": {
+                        "$ref": "#/components/schemas/Categoria"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoriaResponse"
+                }
+            },
+            "CategoriaResponseException404": {
+                "title": "CategoriaResponseException404",
+                "description": "Resposta enviada via JSON para os dados de uma Categoria",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Categoria não encontrada."
+                    },
+                    "categoria": {
+                        "title": "categoria",
+                        "description": "Dados de uma categoria.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoriaResponseException404"
+                }
+            },
+            "CategoriaResponseException406": {
+                "title": "CategoriaResponseException406",
+                "description": "Resposta enviada via JSON para os dados de uma Categoria",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "O campo Id deve ser numérico."
+                    },
+                    "categoria": {
+                        "title": "categoria",
+                        "description": "Dados de uma categoria.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoriaResponseException406"
+                }
+            },
+            "CategoriaResponseException500": {
+                "title": "CategoriaResponseException500",
+                "description": "Resposta enviada via JSON para os dados de uma Categoria",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "categoria": {
+                        "title": "categoria",
+                        "description": "Dados de uma categoria.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoriaResponseException500"
+                }
+            },
+            "CategoriasResponse": {
+                "title": "CategoriasResponse",
+                "description": "Resposta enviada via JSON para Lista de Categorias",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Lista de categorias retornada."
+                    },
+                    "categorias": {
+                        "title": "categorias",
+                        "description": "Lista de Categorias retornada.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Categoria"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoriasResponse"
+                }
+            },
+            "CategoriasResponseException500": {
+                "title": "CategoriasResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Categorias",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "categorias": {
+                        "title": "categorias",
+                        "description": "Lista de Categorias retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoriasResponseException500"
+                }
+            },
+            "ClienteResponse": {
+                "title": "ClienteResponse",
+                "description": "Resposta enviada via JSON para os dados de um Cliente",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Cliente retornado."
+                    },
+                    "cliente": {
+                        "$ref": "#/components/schemas/Cliente"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ClienteResponse"
+                }
+            },
+            "ClienteResponseException404": {
+                "title": "ClienteResponseException404",
+                "description": "Resposta enviada via JSON para os dados de um Cliente",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Cliente não encontrado."
+                    },
+                    "cliente": {
+                        "title": "cliente",
+                        "description": "Dados de uma cliente.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ClienteResponseException404"
+                }
+            },
+            "ClienteResponseException406": {
+                "title": "ClienteResponseException406",
+                "description": "Resposta enviada via JSON para os dados de um Cliente",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "O campo Id deve ser numérico."
+                    },
+                    "cliente": {
+                        "title": "cliente",
+                        "description": "Dados de um cliente.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ClienteResponseException406"
+                }
+            },
+            "ClienteResponseException500": {
+                "title": "ClienteResponseException500",
+                "description": "Resposta enviada via JSON para os dados de um Cliente",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro interno."
+                    },
+                    "cliente": {
+                        "title": "cliente",
+                        "description": "Dados de um cliente.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ClienteResponseException500"
+                }
+            },
+            "ClientesResponse": {
+                "title": "ClientesResponse",
+                "description": "Resposta enviada via JSON para Lista de Clientes",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Lista de clientes retornada."
+                    },
+                    "clientes": {
+                        "title": "clientes",
+                        "description": "Lista de Clientes retornada.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Cliente"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ClientesResponse"
+                }
+            },
+            "ClientesResponseException500": {
+                "title": "ClientesResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Clientes",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "clientes": {
+                        "title": "categorias",
+                        "description": "Lista de Clientes retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ClientesResponseException500"
+                }
+            },
+            "ItemResponse": {
+                "title": "ItemResponse",
+                "description": "Resposta enviada via JSON para os dados de um Item do Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Item do Pedido retornado."
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/Item"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ItemResponse"
+                }
+            },
+            "ItemResponseException404": {
+                "title": "ItemResponseException404",
+                "description": "Resposta enviada via JSON para os dados de um Item do Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Item do Pedido não encontrado."
+                    },
+                    "item": {
+                        "title": "item",
+                        "description": "Dados de um Item do Pedido.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ItemResponseException404"
+                }
+            },
+            "ItemResponseException406": {
+                "title": "ItemResponseException406",
+                "description": "Resposta enviada via JSON para os dados de um Item do Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "O campo Id deve ser numérico."
+                    },
+                    "item": {
+                        "title": "item",
+                        "description": "Dados de um Item do Pedido.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ItemResponseException406"
+                }
+            },
+            "ItemResponseException500": {
+                "title": "ItemResponseException500",
+                "description": "Resposta enviada via JSON para os dados de um Item do Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro interno."
+                    },
+                    "item": {
+                        "title": "item",
+                        "description": "Dados de um Item do Pedido.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ItemResponseException500"
+                }
+            },
+            "ItensDoPedidoResponse": {
+                "title": "ItensDoPedidoResponse",
+                "description": "Resposta enviada via JSON para Lista de Itens do Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Lista de Itens do Pedido retornada."
+                    },
+                    "itens": {
+                        "title": "pedidos",
+                        "description": "Lista de Itens do Pedido retornada.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Item"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ItensDoPedidoResponse"
+                }
+            },
+            "ItensDoPedidoResponseException500": {
+                "title": "ItensDoPedidoResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Clientes",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "itens": {
+                        "title": "categorias",
+                        "description": "Lista de Itens do Pedido retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ItensDoPedidoResponseException500"
+                }
+            },
+            "MarcaResponse": {
+                "title": "MarcaResponse",
+                "description": "Resposta enviada via JSON para os dados de uma Marca",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Marca retornada."
+                    },
+                    "marca": {
+                        "$ref": "#/components/schemas/Marca"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MarcaResponse"
+                }
+            },
+            "MarcaResponseException404": {
+                "title": "MarcaResponseException404",
+                "description": "Resposta enviada via JSON para os dados de uma Marca",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Marca não encontrada."
+                    },
+                    "marca": {
+                        "title": "Marca",
+                        "description": "Dados de uma Marca.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MarcaResponseException404"
+                }
+            },
+            "MarcaResponseException406": {
+                "title": "MarcaResponseException406",
+                "description": "Resposta enviada via JSON para os dados de uma Marca",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "O campo Id deve ser numérico."
+                    },
+                    "marca": {
+                        "title": "Marca",
+                        "description": "Dados de uma Marca.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MarcaResponseException406"
+                }
+            },
+            "MarcaResponseException500": {
+                "title": "MarcaResponseException500",
+                "description": "Resposta enviada via JSON para os dados de uma Marca",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "marca": {
+                        "title": "Marca",
+                        "description": "Dados de uma Marca.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MarcaResponseException500"
+                }
+            },
+            "MarcasResponse": {
+                "title": "MarcasResponse",
+                "description": "Resposta enviada via JSON para Lista de Marcas",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Lista de Marcas retornada."
+                    },
+                    "Marcas": {
+                        "title": "Marcas",
+                        "description": "Lista de Marcas retornada.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Marca"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MarcasResponse"
+                }
+            },
+            "MarcasResponseException500": {
+                "title": "MarcasResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Marcas",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "Marcas": {
+                        "title": "Marcas",
+                        "description": "Lista de Marcas retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MarcasResponseException500"
+                }
+            },
+            "PedidoResponse": {
+                "title": "PedidoResponse",
+                "description": "Resposta enviada via JSON para os dados de um Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Pedido retornado."
+                    },
+                    "pedido": {
+                        "$ref": "#/components/schemas/Pedido"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PedidoResponse"
+                }
+            },
+            "PedidoResponseException404": {
+                "title": "PedidoResponseException404",
+                "description": "Resposta enviada via JSON para os dados de um Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Pedido não encontrado."
+                    },
+                    "pedido": {
+                        "title": "pedido",
+                        "description": "Dados de um pedido.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PedidoResponseException404"
+                }
+            },
+            "PedidoResponseException406": {
+                "title": "PedidoResponseException406",
+                "description": "Resposta enviada via JSON para os dados de um Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "O campo Id deve ser numérico."
+                    },
+                    "pedido": {
+                        "title": "cliente",
+                        "description": "Dados de um Pedido.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PedidoResponseException406"
+                }
+            },
+            "PedidoResponseException500": {
+                "title": "PedidoResponseException500",
+                "description": "Resposta enviada via JSON para os dados de um Pedido",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro interno."
+                    },
+                    "pedido": {
+                        "title": "pedido",
+                        "description": "Dados de um pedido.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PedidoResponseException500"
+                }
+            },
+            "PedidosResponse": {
+                "title": "PedidosResponse",
+                "description": "Resposta enviada via JSON para Lista de Pedidos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Lista de pedidos retornada."
+                    },
+                    "pedidos": {
+                        "title": "pedidos",
+                        "description": "Lista de Pedidos retornada.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Pedido"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PedidosResponse"
+                }
+            },
+            "PedidosResponseException500": {
+                "title": "PedidosResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Pedidos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "pedidos": {
+                        "title": "produtos",
+                        "description": "Lista de Pedidos retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PedidosResponseException500"
+                }
+            },
+            "ProdutoResponse": {
+                "title": "ProdutoResponse",
+                "description": "Resposta enviada via JSON para os dados de um Produto",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Produto retornado."
+                    },
+                    "produto": {
+                        "$ref": "#/components/schemas/Produto"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ProdutoResponse"
+                }
+            },
+            "ProdutoResponseException404": {
+                "title": "ProdutoResponseException404",
+                "description": "Resposta enviada via JSON para Lista de Produtos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 404
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Não encontrado."
+                    },
+                    "produto": {
+                        "title": "produtos",
+                        "description": "Lista de Produtos retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ProdutoResponseException404"
+                }
+            },
+            "ProdutoResponseException406": {
+                "title": "ProdutoResponseException406",
+                "description": "Resposta enviada via JSON para Lista de Produtos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 406
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "O campo Id deve ser numérico."
+                    },
+                    "produto": {
+                        "title": "produtos",
+                        "description": "Lista de Produtos retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ProdutoResponseException406"
+                }
+            },
+            "ProdutoResponseException500": {
+                "title": "ProdutoResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Produtos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "produto": {
+                        "title": "produtos",
+                        "description": "Lista de Produtos retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ProdutoResponseException500"
+                }
+            },
+            "ProdutosResponse": {
+                "title": "ProdutosResponse",
+                "description": "Resposta enviada via JSON para Lista de Produtos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 200
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Lista de produtos retornada."
+                    },
+                    "produtos": {
+                        "title": "produtos",
+                        "description": "Lista de Produtos retornada.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Produto"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ProdutosResponse"
+                }
+            },
+            "ProdutosResponseException500": {
+                "title": "ProdutosResponseException500",
+                "description": "Resposta enviada via JSON para Lista de Produtos",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "HTTP Status.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 500
+                    },
+                    "mensagem": {
+                        "title": "mensagem",
+                        "description": "Mensagem informativa da resposta.",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Erro Interno."
+                    },
+                    "pedidos": {
+                        "title": "produtos",
+                        "description": "Lista de Produtos retornada.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ProdutosResponseException500"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": {
+        "bearer": {
+            "type": "http",
+            "description": "Authorization token obtained from logging in.",
+            "name": "Authorization",
+            "in": "header",
+            "scheme": "bearer"
+        }
+    }
+}
