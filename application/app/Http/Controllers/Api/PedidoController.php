@@ -42,7 +42,17 @@ class PedidoController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="string"
-     *      )
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por data do pedido",
+     *          example = "+data_do_pedido",
+     *          value = "+data_do_pedido"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por data do pedido",
+     *          example = "-data_do_pedido",
+     *         value = "-data_do_pedido"
+     *      ),
      *  ),
      *  @OA\Response (
      *      response = 200,

@@ -30,6 +30,36 @@ class ProdutoController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="string"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascendente por nome do produto",
+     *          example = "+nome_do_produto",
+     *          value = "+nome_do_produto"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por nome do produto",
+     *          example = "-nome_do_produto",
+     *         value = "-nome_do_produto"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascendente ano do modelo",
+     *          example = "+ano_do_modelo",
+     *          value = "+ano_do_modelo"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por ano do modelo",
+     *          example = "-ano_do_modelo",
+     *         value = "-ano_do_modelo"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascendente por preço de lista",
+     *          example = "+preco_de_lista",
+     *          value = "+preco_de_lista"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por preço de lista",
+     *          example = "-preco_de_lista",
+     *          value = "-preco_de_lista"
      *      )
      *  ),
      *  @OA\Parameter(
@@ -39,6 +69,11 @@ class ProdutoController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="string"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Filtro de 'Mountain Bikes' em nome da categoria",
+     *          example = "nome_da_categoria:Mountain Bikes",
+     *          value = "nome_da_categoria:Mountain Bikes"
      *      )
      *  ),
      *  @OA\Parameter(
@@ -48,6 +83,11 @@ class ProdutoController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="integer"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Página 1",
+     *          example = "1",
+     *          value = "1"
      *      )
      *  ),
      *  @OA\Response (

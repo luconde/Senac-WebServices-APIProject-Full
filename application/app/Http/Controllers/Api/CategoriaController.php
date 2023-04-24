@@ -30,6 +30,16 @@ class CategoriaController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="string"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por nome da categoria",
+     *          example = "+nome_da_categoria",
+     *          value = "+nome_da_categoria"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por nome da categoria",
+     *          example = "-nome_da_categoria",
+     *          value = "-nome_da_categoria"
      *      )
      *  ),
      *  @OA\Response (

@@ -30,6 +30,16 @@ class MarcaController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="string"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por nome da marca",
+     *          example = "+nome_da_marca",
+     *          value = "+nome_da_marca"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por nome da marca",
+     *          example = "-nome_da_marca",
+     *          value = "-nome_da_marca"
      *      )
      *  ),
      *  @OA\Response (

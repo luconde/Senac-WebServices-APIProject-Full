@@ -30,6 +30,46 @@ class ClienteController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="string"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por nome",
+     *          example = "+nome",
+     *          value = "+nome"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por nome",
+     *          example = "-nome",
+     *         value = "-nome"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por email",
+     *          example = "+email",
+     *          value = "+email"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por email",
+     *          example = "-email",
+     *         value = "-email"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por cidade",
+     *          example = "+cidade",
+     *          value = "+cidade"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por cidade",
+     *          example = "-cidade",
+     *         value = "-cidade"
+     *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação ascedente por estado",
+     *          example = "+estado",
+     *          value = "+estado"
+      *      ),
+     *      @OA\Examples(
+     *          summary = "Ordenação descendente por estado",
+     *          example = "-estado",
+     *         value = "-estado"
      *      )
      *  ),
      *  @OA\Response (
