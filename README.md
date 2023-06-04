@@ -1,32 +1,28 @@
 # Visão Geral
-Este é um projeto de demonstração de desenvolvimento de API WS Rest em Laravel. 
+Este é um projeto de demonstração de desenvolvimento de API WS Rest em Laravel.
 
 Este projeto implementa um conjunto de funcionalidades que foram exibidas ao longo da disciplina de Desenvolvimento de Web Services do curso de Tecnologia de Sistemas de Internet da Universidade SENAC.
 
-# Autor
-Luciano Condé de Souza (luconde@gmail.com)
+Projeto construído para a disciplina **Desenvolvimento De WebServices** do curso **Tecnologia em Sistemas para Internet (TSI) do Senac-SP**.
 
-Data: 2023-04-18
+# Autor
+**Luciano Condé de Souza (luconde@gmail.com)**  
+**Data da criação do projeto**: 2023-04-18  
+**Data da última atualização**: 2023-06-02  
+**Versão**: 1.0.1
 
 ## Disclaimer
-O seguinte material foi construído a partir de referências publicadas na Internet, livros e artigos acadêmicos. As referências foram utilizadas de sites e posts na Internet, não há qualquer propósito de plagiar os autores, em caso de pedidos de adição do autor, pode encontrar em contato pelo email luconde@gmail.com. A simplificação de certos conteúdos tem o único propósito didático para facilitar o entendimento dos mesmos para os alunos. 
+O seguinte material foi construído a partir de referências publicadas na Internet, livros e artigos acadêmicos. As referências foram utilizadas de sites e posts na Internet, não há qualquer propósito de plagiar os autores, em caso de pedidos de adição do autor, pode encontrar em contato pelo email luconde@gmail.com. A simplificação de certos conteúdos tem o único propósito didático para facilitar o entendimento dos mesmos para os alunos.
 
-# Notas da versão
-## Versão 1.0
-1. Publicação do conteúdo
-
-### Notas técnicas
-1. A funcionalidade Passport do Laravel foi utilizada para implementar o mecanismo de autenticação via Bearer Token. Assim sendo, para qualquer chamada é necessário adicionar o token (oriundo do WebService login) no cabeçalho da chamada.
-2. A funcionalidade L5-Swagger do Laravel foi utilizada para implementar a documentação em formato Swagger. Os detalhes estão escritos dentro do próprio código, criando assim uma boa prática para documentação.
-3. O banco de dados e os seus dados utilizado pode ser encontrado na pasta "database". O SGDB utilizado é o MySQL da Oracle.
-4. Para executar o Docker é necessário ter o Docker Desktop instalado previamente.
-5. Para executar o Kubernetes no OCI é necessário ter uma assinatura do Oracle Cloud Infrastructure previamente.
+# Notas da versão 
+## Versão 1.0.1
+1. Pasta **scripts** para armazenamento dos scripts Powershell para administração do ambiente
+2. Pasta **src** para ter o código-fonte do projeto
+3. Movimentação do código-fonte para dentro da pasta **src**
+4. Atualização e ajustes do arquivo README.md
+5. Tagging para ter mais controle da evolução do código-fonte
 
 # Detalhes técnicos
-## Estrutura de diretórios
-1. database: Dump do banco de dados MySQL
-2. application: Código-fonte da aplicação Laravel/PHP
-3. infra: Arquivos utilizados para demonstração de uso de Docker & Kubernetes no OCI
 
 ## Funcionalidades
 1. CRUD para a tabela de categoria
@@ -52,6 +48,23 @@ O seguinte material foi construído a partir de referências publicadas na Inter
 5. Banco previamente preenchido
 
 # Informações adicionais
+## Preparação
+Utilize o arquivo .env.example para criar o próprio .env para o projeto.
+
+Também importante executar o comando **composer update** para atualizar as bibliotecas do Laravel e baixar as dependências associadas.
+
+## Estrutura de diretórios
+1. database: Dump do banco de dados MySQL
+2. application: Código-fonte da aplicação Laravel/PHP
+3. infra: Arquivos utilizados para demonstração de uso de Docker & Kubernetes no OCI
+
+## Notas técnicas
+1. A funcionalidade Passport do Laravel foi utilizada para implementar o mecanismo de autenticação via Bearer Token. Assim sendo, para qualquer chamada é necessário adicionar o token (oriundo do WebService login) no cabeçalho da chamada.
+2. A funcionalidade L5-Swagger do Laravel foi utilizada para implementar a documentação em formato Swagger. Os detalhes estão escritos dentro do próprio código, criando assim uma boa prática para documentação.
+3. O banco de dados e os seus dados utilizado pode ser encontrado na pasta "database". O SGDB utilizado é o MySQL da Oracle.
+4. Para executar o Docker é necessário ter o Docker Desktop instalado previamente.
+5. Para executar o Kubernetes no OCI é necessário ter uma assinatura do Oracle Cloud Infrastructure previamente.
+
 ## Canvas dos WebServices
 | Item            | Objetivo                                | Ação        | Verbo  | Parâmetros - Query                                          | Parâmetros - Path        | Parâmetros - Corpo | Parâmetros - Cabeçalho | Saída                                   | Url                                                      |
 |-----------------|-----------------------------------------|-------------|--------|-------------------------------------------------------------|--------------------------|--------------------|------------------------|-----------------------------------------|----------------------------------------------------------|
@@ -92,3 +105,4 @@ O seguinte material foi construído a partir de referências publicadas na Inter
 
 ## Screenshot do Swagger
 ![Screen Shot](ScreenshotSwagger.png)  
+
